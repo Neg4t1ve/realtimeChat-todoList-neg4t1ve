@@ -1,65 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import RequireAuth from "../components/hoc/RequireAuth";
-import { useState } from "react";
+import TodoList from "../components/todoList/TodoList";
+import TodoForm from "../components/todoList/TodoForm";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../app/slice/todoSlice";
 
 function TodoListPage() {
   const [text, setText] = useState("");
-  const [todos, setTodos] = useState([]);
+  const dispatch = useDispatch();
 
-  const AddTodo = () => {
-    if (text.trim().length) {
-      setTodos([
-        ...todos,
-        {
-          id: new Date().toISOString(),
-          text,
-          completed: false,
-        },
-      ]);
-    }
+  const addTask = () => {
+    dispatch(addTodo({ text }));
+    setText("");
   };
 
-  const RemoveTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-  };
-
-  const toggleTodoComplete = (id) => {
-    setTodos(
-      todos.map((todo) => {
-        if (todo.id !== id) return todo;
-        return {
-          ...todo,
-          completed: !todo.completed,
-        };
-      })
-    );
-  };
   return (
     <div>
-      <label htmlFor="todoinput">
-        <input
-          type="text"
-          value={text}
-          id="todoinput"
-          onChange={(e) => setText(e.target.value)}
-        />
-        <button onClick={AddTodo}>Add todo</button>
-      </label>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>
-            <input
-              type="checkbox"
-              checked={todos.completed}
-              onChange={() => toggleTodoComplete(todo.id)}
-            />
-            <span>{todo.text}</span>
-            <span style={{ color: "#555" }} onClick={() => RemoveTodo(todo.id)}>
-              &times;
-            </span>
-          </li>
-        ))}
-      </ul>
+      <TodoForm text={text} handleInput={setText} handleSubmit={addTask} />
+      <TodoList />
     </div>
   );
 }
