@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import RequireAuth from "../components/hoc/RequireAuth";
 import TodoList from "../components/todoList/TodoList";
 import TodoForm from "../components/todoList/TodoForm";
 import { useDispatch } from "react-redux";

@@ -7,10 +7,9 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { NavLink } from "react-router-dom";
 import Navbar from "./Navbar";
+import AuthButtons from "./auth/AuthButtons";
 
 function Header() {
-  const userAuth = false;
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="sticky">
@@ -30,28 +29,7 @@ function Header() {
             Osadchii Andrei's portfolio
           </Typography>
           <Navbar />
-          {userAuth ? (
-            <Button variant="contained" color="secondary">
-              Log Out
-            </Button>
-          ) : (
-            <>
-              <NavLink to="/login">
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  sx={{ marginRight: 2 }}
-                >
-                  Sign In
-                </Button>
-              </NavLink>
-              <NavLink to="/register">
-                <Button variant="contained" color="secondary">
-                  Sign Up
-                </Button>
-              </NavLink>
-            </>
-          )}
+          <AuthButtons />
         </Toolbar>
       </AppBar>
     </Box>
