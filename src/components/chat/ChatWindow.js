@@ -7,16 +7,16 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import Loader from "../Loader";
 
 function ChatWindow() {
-  const [value, loading, error] = useCollection(
+  const [messages, loading, error] = useCollection(
     query(collection(db, "chatMessages"), orderBy("time"))
   );
   return (
     <Container maxWidth="md" sx={{ height: "70vh", overflowY: "auto" }}>
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
       {loading && <Loader />}
-      {value && (
+      {messages && (
         <span>
-          {value.docs.map((doc) => (
+          {messages.docs.map((doc) => (
             <Message
               key={doc.id}
               username={doc.data().userEmail}
