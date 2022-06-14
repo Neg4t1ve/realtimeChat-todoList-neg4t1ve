@@ -6,7 +6,3 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-input:checked + span {
-  text-decoration: line-through;
-}

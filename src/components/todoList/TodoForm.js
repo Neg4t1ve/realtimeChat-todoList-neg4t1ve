@@ -1,19 +1,24 @@
-import { TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import React from "react";
 
 function TodoForm({ text, handleInput, handleSubmit }) {
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
+    <form onSubmit={handleSubmit}>
       <label htmlFor="todoinput">
         <TextField
-          label="Enter todo"
+          label="ToDo's"
+          margin="dense"
+          placeholder="Enter todo"
           variant="outlined"
+          fullWidth
           type="text"
           value={text}
           id="todoinput"
           onChange={(e) => handleInput(e.target.value)}
         />
-        <button onClick={handleSubmit}>Add todo</button>
+        <Button variant="contained" onClick={handleSubmit}>
+          Add todo
+        </Button>
       </label>
     </form>
   );
