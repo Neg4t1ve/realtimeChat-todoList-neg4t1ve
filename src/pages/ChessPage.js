@@ -1,7 +1,13 @@
 import React from "react";
+import Loader from "../components/Loader";
 
 function ChessPage() {
-  return <div>ChessPage</div>;
+  return (
+    <div>
+      ChessPage
+      <Loader />
+    </div>
+  );
 }
 
 export default ChessPage;
