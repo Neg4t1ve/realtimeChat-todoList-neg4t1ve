@@ -7,7 +7,13 @@ function ChatPage() {
   return (
     <Container
       maxWidth="md"
-      sx={{ border: "1px solid grey", justifyContent: "center" }}
+      sx={{
+        justifyContent: "center",
+        marginTop: "2.5rem",
+        display: "flex",
+        flexDirection: "column",
+        gap: "1rem",
+      }}
     >
       <ChatWindow />
       <ChatForm />

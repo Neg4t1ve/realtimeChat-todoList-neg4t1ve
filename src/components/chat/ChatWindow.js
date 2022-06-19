@@ -11,20 +11,26 @@ function ChatWindow() {
     query(collection(db, "chatMessages"), orderBy("time"))
   );
   return (
-    <Container maxWidth="md" sx={{ height: "70vh", overflowY: "auto" }}>
+    <Container
+      maxWidth="md"
+      sx={{
+        height: "70vh",
+        overflowY: "auto",
+        border: "1px solid grey",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
       {loading && <Loader />}
-      {messages && (
-        <span>
-          {messages.docs.map((doc) => (
-            <Message
-              key={doc.id}
-              username={doc.data().userEmail}
-              text={doc.data().message}
-            />
-          ))}
-        </span>
-      )}
+      {messages &&
+        messages.docs.map((doc) => (
+          <Message
+            key={doc.id}
+            username={doc.data().userEmail}
+            text={doc.data().message}
+          />
+        ))}
     </Container>
   );
 }
