@@ -4,22 +4,20 @@ import React from "react";
 function TodoForm({ text, handleInput, handleSubmit }) {
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="todoinput">
-        <TextField
-          label="ToDo's"
-          margin="dense"
-          placeholder="Enter todo"
-          variant="outlined"
-          fullWidth
-          type="text"
-          value={text}
-          id="todoinput"
-          onChange={(e) => handleInput(e.target.value)}
-        />
-        <Button variant="contained" onClick={handleSubmit}>
-          Add todo
-        </Button>
-      </label>
+      <TextField
+        label="ToDo's"
+        margin="dense"
+        placeholder="Enter todo"
+        variant="outlined"
+        fullWidth
+        type="text"
+        value={text}
+        id="todoinput"
+        onChange={(e) => handleInput(e.target.value)}
+      />
+      <Button variant="contained" onClick={handleSubmit}>
+        Add todo
+      </Button>
     </form>
   );
 }
