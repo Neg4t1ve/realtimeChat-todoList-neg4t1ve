@@ -3,9 +3,12 @@ import Form from "./Form";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../app/slice/userSlice";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Register() {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleRegister = (email, password) => {
     const auth = getAuth();
@@ -19,6 +22,13 @@ function Register() {
             token: user.accessToken,
           })
         );
+      })
+      .then(() => {
+        if (location.state?.from) {
+          navigate(location.state.from.pathname, { replace: true });
+        } else {
+          navigate("/", { replace: true });
+        }
       })
       .catch(console.error);
   };

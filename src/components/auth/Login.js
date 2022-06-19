@@ -3,11 +3,13 @@ import Form from "./Form";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../app/slice/userSlice";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Login() {
   const dispatch = useDispatch();
+  const location = useLocation();
   const navigate = useNavigate();
+
   const handleLogin = (email, password) => {
     const auth = getAuth();
 
@@ -21,8 +23,14 @@ function Login() {
           })
         )
       )
+      .then(() => {
+        if (location.state?.from) {
+          navigate(location.state.from.pathname, { replace: true });
+        } else {
+          navigate("/", { replace: true });
+        }
+      })
       .catch(console.error);
-    navigate("/");
   };
 
   return <Form title="Sign in" handleClick={handleLogin} />;
