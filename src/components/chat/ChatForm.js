@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { db } from "../../firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
@@ -23,7 +23,7 @@ function ChatForm() {
   };
 
   return (
-    <form onSubmit={handleSendMessage}>
+    <Box component={"form"} onSubmit={handleSendMessage}>
       <TextField
         fullWidth
         id="outlined-basic"
@@ -32,7 +32,7 @@ function ChatForm() {
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-    </form>
+    </Box>
   );
 }
 

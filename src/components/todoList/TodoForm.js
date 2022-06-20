@@ -1,9 +1,9 @@
-import { Button, TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import React from "react";
 
 function TodoForm({ text, handleInput, handleSubmit }) {
   return (
-    <form onSubmit={handleSubmit}>
+    <Box component={"form"} onSubmit={handleSubmit}>
       <TextField
         label="ToDo's"
         margin="dense"
@@ -18,7 +18,7 @@ function TodoForm({ text, handleInput, handleSubmit }) {
       <Button variant="contained" onClick={handleSubmit}>
         Add todo
       </Button>
-    </form>
+    </Box>
   );
 }
 

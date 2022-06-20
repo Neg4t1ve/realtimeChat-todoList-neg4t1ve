@@ -5,11 +5,18 @@ import { collection, orderBy, query } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useCollection } from "react-firebase-hooks/firestore";
 import Loader from "../Loader";
+import { useMemo } from "react";
 
 function ChatWindow() {
   const [messages, loading, error] = useCollection(
     query(collection(db, "chatMessages"), orderBy("time"))
   );
+  const memoizeMessages = useMemo((messages) => {
+    let cachedMessages = Object.assign({}, messages);
+    console.log(cachedMessages);
+    return cachedMessages;
+  });
+
   return (
     <Container
       maxWidth="md"

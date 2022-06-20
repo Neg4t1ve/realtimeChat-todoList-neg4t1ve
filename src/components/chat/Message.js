@@ -15,7 +15,6 @@ function Message({ username, text }) {
     >
       <Paper
         variant="outlined"
-        elevation={3}
         sx={{
           backgroundColor: lightGreen[200],
           padding: "0.5rem 0.25rem",

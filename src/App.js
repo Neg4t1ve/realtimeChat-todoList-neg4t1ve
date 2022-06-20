@@ -27,14 +27,6 @@ function App() {
               </RequireAuth>
             }
           />
-          <Route
-            path="chess"
-            element={
-              <RequireAuth>
-                <ChessPage />
-              </RequireAuth>
-            }
-          />
           <Route path="todolist" element={<TodoListPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
